@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Para Natalia ✨</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Tipografía cursiva romántica y cuerpo elegante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --night-deep: #070919;
+      --night-purple: #161132;
+      --gold-warm: #ffd36e;
+      --gold-amber: #ff9e2c;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 62%, #241946 0%, #110d29 48%, #060814 100%);
+      font-family: 'Cormorant Garamond', serif;
+      color: #fff8eb;
+      user-select: none;
+    }
+
+    .font-cursive {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .font-royal {
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    /* Resplandor dorado suave */
+    .gold-glow {
+      text-shadow: 0 0 12px rgba(255, 211, 110, 0.75), 0 0 28px rgba(255, 158, 44, 0.45);
+    }
+
+    .card-glass {
+      background: linear-gradient(160deg, rgba(24, 18, 52, 0.84) 0%, rgba(11, 12, 32, 0.92) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 215, 120, 0.32);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.65), inset 0 0 25px rgba(255, 195, 90, 0.08);
+    }
+
+    .btn-lantern {
+      background: linear-gradient(135deg, rgba(255, 200, 90, 0.22), rgba(255, 140, 40, 0.16));
+      border: 1px solid rgba(255, 214, 115, 0.55);
+      box-shadow: 0 0 20px rgba(255, 185, 70, 0.25);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn-lantern:hover, .btn-lantern:active {
+      background: linear-gradient(135deg, rgba(255, 210, 105, 0.38), rgba(255, 150, 50, 0.28));
+      border-color: #ffe299;
+      box-shadow: 0 0 28px rgba(255, 200, 90, 0.55);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Linternas especiales interactivas flotantes (DOM layer) */
+    .wish-orb {
+      position: absolute;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      animation: floatOrb 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+      z-index: 15;
+    }
+
+    .wish-orb:hover {
+      transform: translate(-50%, -50%) scale(1.16);
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { margin-top: 0px; }
+      50% { margin-top: -12px; }
+    }
+
+    /* Animación de entrada de modales */
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop.active .modal-content {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Mensaje flotante al soltar una linterna */
+    @keyframes riseMessage {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 12px) scale(0.92);
+      }
+      15% {
+        opacity: 1;
+        transform: translate(-50%, 0px) scale(1);
+      }
+      80% {
+        opacity: 1;
+        transform: translate(-50%, -32px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -52px) scale(0.96);
+      }
+    }
+
+    .floating-toast {
+      position: fixed;
+      pointer-events: none;
+      z-index: 25;
+      animation: riseMessage 4.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Scrollbar sutil en carta */
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 211, 110, 0.35);
+      border-radius: 999px;
+    }
+
+    /* Latido suave del sobre */
+    @keyframes pulseEnvelope {
+      0%, 100% {
+        box-shadow: 0 0 18px rgba(255, 205, 95, 0.35), 0 0 36px rgba(255, 145, 45, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(255, 220, 120, 0.7), 0 0 52px rgba(255, 160, 50, 0.4);
+      }
+    }
+
+    .envelope-pulse {
+      animation: pulseEnvelope 3.2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="relative w-screen h-screen overflow-hidden">
+
+  <!-- Canvas principal: Cielo nocturno, estrellas, luna, reflejos en lago, bote y linternas animadas -->
+  <canvas id="skyCanvas" class="fixed inset-0 w-full h-full block z-0"></canvas>
+
+  <!-- Capa de Linternas Especiales Interactivas ("Nuestras linternas de deseos") -->
+  <div id="specialLanternsLayer" class="fixed inset-0 pointer-events-none z-10"></div>
+
+  <!-- Contenedor para mensajes románticos flotantes al tocar el cielo -->
+  <div id="floatingMessagesLayer" class="fixed inset-0 pointer-events-none z-20"></div>
+
+  <!-- Interfaz Superior (Título y botón de música ambiental) -->
+  <header class="fixed top-0 left-0 right-0 z-30 flex items-start justify-between px-4 sm:px-8 pt-4 sm:pt-6 pointer-events-none">
+    <div class="pointer-events-auto max-w-[75%]">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-200/80 font-royal">
+        De Miguel Ángel para
+      </p>
+      <h1 class="font-cursive text-4xl sm:text-6xl text-amber-100 gold-glow leading-tight mt-0.5">
+        Natalia
+      </h1>
+      <p class="text-xs sm:text-base text-amber-100/80 italic mt-0.5">
+        Toca el cielo para elevar una luz, o abre las linternas brillantes ✨
+      </p>
+    </div>
+
+    <!-- Botón de Música Ambiental (Web Audio API) -->
+    <button id="audioToggleBtn"
+      aria-label="Activar o desactivar melodía suave"
+      class="pointer-events-auto btn-lantern rounded-full px-3.5 py-2.5 sm:px-4 sm:py-2.5 flex items-center gap-2 text-amber-100 text-xs sm:text-sm font-medium backdrop-blur-md">
+      <span id="audioIcon" class="text-base sm:text-lg">🎵</span>
+      <span id="audioLabel" class="hidden sm:inline">Melodía</span>
+    </button>
+  </header>
+
+  <!-- Barra de Controles Inferiores -->
+  <footer class="fixed bottom-4 sm:bottom-6 left-0 right-0 z-30 px-3 sm:px-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pointer-events-none">
+    <!-- Botón 1: Soltar una linterna con mensaje -->
+    <button id="releaseLanternBtn"
+      class="pointer-events-auto btn-lantern rounded-full px-4 py-2.5 sm:px-5 sm:py-3 flex items-center gap-2 text-amber-100 text-sm sm:text-base font-semibold tracking-wide">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7 4h10l2 5v8l-3 3H8l-3-3V9l2-5zm2 3v9h6V7H9z"/>
+      </svg>
+      <span>Soltar una linterna</span>
+    </button>
+
+    <!-- Botón 2: Carta Dedicatoria Central -->
+    <button id="openLetterBtn"
+      class="pointer-events-auto envelope-pulse rounded-full px-5 py-2.5 sm:px-6 sm:py-3 flex items-center gap-2.5 text-amber-950 font-bold text-sm sm:text-base tracking-wide transition-transform duration-300 hover:scale-105 active:scale-95"
+      style="background: linear-gradient(135deg, #ffe599 0%, #ffbe4f 55%, #f59e0b 100%);">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-950" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      <span>Carta para ti</span>
+    </button>
+
+    <!-- Botón 3: Escribir tu propio deseo -->
+    <button id="openWishFormBtn"
+      class="pointer-events-auto btn-lantern rounded-full px-4 py-2.5 sm:px-5 sm:py-3 flex items-center gap-2 text-amber-100 text-sm sm:text-base font-semibold tracking-wide">
+      <span class="text-amber-300">✨</span>
+      <span>Tu deseo</span>
+    </button>
+  </footer>
+
+  <!-- MODAL 1: Carta Dedicatoria de Miguel Ángel para Natalia -->
+  <div id="letterModal" class="modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="modal-content card-glass relative w-full max-w-lg rounded-3xl p-6 sm:p-9 text-amber-50 max-h-[86vh] flex flex-col">
+      <!-- Botón cerrar -->
+      <button id="closeLetterBtn"
+        aria-label="Cerrar carta"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center text-amber-200/80 hover:text-white hover:bg-white/10 transition">
+        ✕
+      </button>
+
+      <!-- Encabezado de la carta -->
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-400/15 border border-amber-300/40 mb-2 text-2xl">
+          🏮
+        </div>
+        <h2 class="font-cursive text-4xl sm:text-5xl text-amber-200 gold-glow">
+          Para ti, Natalia
+        </h2>
+        <div class="w-24 h-px bg-gradient-to-r from-transparent via-amber-300/60 to-transparent mx-auto mt-2"></div>
+      </div>
+
+      <!-- Cuerpo de la carta -->
+      <div class="custom-scroll overflow-y-auto pr-1 space-y-4 text-base sm:text-lg leading-relaxed text-amber-50/95">
+        <p class="italic text-amber-200/90 text-lg sm:text-xl">
+          Mi querida Natalia,
+        </p>
+        <p>
+          Quise crear este pequeño cielo nocturno solo para ti, porque cada vez que pienso en lo que significas en mi vida, siento exactamente esa magia: como si miles de luces cálidas iluminaran de repente la noche más tranquila.
+        </p>
+        <p>
+          Antes de conocerte, uno camina mirando el mundo sin imaginar que una sola persona puede cambiar por completo la forma en que se ve todo. Contigo entendí que la verdadera luz no está en el cielo, sino en tu sonrisa, en tu mirada y en la paz que me das cuando estamos juntos.
+        </p>
+        <p>
+          Cada linterna que sube en esta pantalla lleva un deseo mío por verte feliz, por seguir compartiendo risas, sueños y momentos inolvidables a tu lado. Eres mi lugar favorito, mi calma y mi mayor alegría.
+        </p>
+        <p>
+          Gracias por ser tú, por iluminar mis días y por dejarme caminar contigo bajo estas luces.
+        </p>
+      </div>
+
+      <!-- Firma -->
+      <div class="mt-6 pt-4 border-t border-amber-300/20 text-right">
+        <p class="text-sm sm:text-base italic text-amber-200/80">Con todo mi cariño,</p>
+        <p class="font-cursive text-3xl sm:text-4xl text-amber-300 gold-glow mt-0.5">
+          Miguel Ángel
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Razón especial al tocar una de "Nuestras linternas de deseos" -->
+  <div id="reasonModal" class="modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div class="modal-content card-glass relative w-full max-w-md rounded-3xl p-6 sm:p-8 text-center">
+      <button id="closeReasonBtn"
+        aria-label="Cerrar mensaje"
+        class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full flex items-center justify-center text-amber-200/80 hover:text-white hover:bg-white/10 transition">
+        ✕
+      </button>
+
+      <div class="mx-auto w-14 h-14 rounded-full bg-amber-400/20 border border-amber-300/50 flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(255,200,90,0.45)]">
+        <span id="reasonIcon" class="text-2xl">✨</span>
+      </div>
+
+      <p class="text-xs uppercase tracking-[0.22em] text-amber-300/80 font-royal mb-1">
+        Nuestras Linternas de Deseos
+      </p>
+      <h3 id="reasonTitle" class="font-cursive text-3xl sm:text-4xl text-amber-200 gold-glow mb-3">
+        Por qué eres especial
+      </h3>
+      <p id="reasonText" class="text-lg sm:text-xl leading-relaxed text-amber-50/95 italic mb-6">
+        ...
+      </p>
+
+      <button id="nextReasonBtn"
+        class="btn-lantern rounded-full px-5 py-2 text-sm sm:text-base text-amber-100 font-semibold">
+        Soltar esta luz al cielo 🏮
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Escribir y soltar tu propia linterna de deseo -->
+  <div id="wishFormModal" class="modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="modal-content card-glass relative w-full max-w-md rounded-3xl p-6 sm:p-8 text-center">
+      <button id="closeWishFormBtn"
+        aria-label="Cerrar formulario de deseo"
+        class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full flex items-center justify-center text-amber-200/80 hover:text-white hover:bg-white/10 transition">
+        ✕
+      </button>
+
+      <div class="text-3xl mb-2">🏮✨</div>
+      <h3 class="font-cursive text-3xl sm:text-4xl text-amber-200 gold-glow mb-1">
+        Pide un deseo, Natalia
+      </h3>
+      <p class="text-sm sm:text-base text-amber-100/80 mb-4">
+        Escribe un deseo, un sueño o algo bonito para nosotros, y míralo elevarse iluminando la noche.
+      </p>
+
+      <form id="customWishForm" class="space-y-4">
+        <textarea id="wishInput" rows="3" maxlength="140" required
+          placeholder="Escribe aquí tu deseo..."
+          class="w-full rounded-2xl bg-white/10 border border-amber-300/40 px-4 py-3 text-amber-50 placeholder-amber-200/45 focus:outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-300/30 text-base sm:text-lg resize-none"></textarea>
+
+        <button type="submit"
+          class="w-full rounded-full py-3 px-6 font-bold text-amber-950 text-base sm:text-lg shadow-lg transition-transform duration-200 hover:scale-[1.02] active:scale-95"
+          style="background: linear-gradient(135deg, #ffe599 0%, #ffbe4f 60%, #f59e0b 100%);">
+          Elevar mi linterna al cielo ✨
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * =========================================================================
+     * CONFIGURACIÓN Y DATOS ROMÁNTICOS (SIN FECHAS)
+     * =========================================================================
+     */
+    const ROMANTIC_MESSAGES = [
+      "Eres la luz más bonita de mi cielo, Natalia ✨",
+      "Contigo cualquier noche se vuelve mágica 🏮",
+      "Tu sonrisa ilumina todo mi mundo 💛",
+      "Mi deseo siempre será verte feliz 🌟",
+      "Eres mi lugar favorito en todo el universo 💫",
+      "Gracias por existir y hacerme tan feliz, Natalia ❤️",
+      "Cada momento contigo vale más que mil estrellas ✨",
+      "En ti encontré la luz que siempre busqué 🏮",
+      "Me encanta la paz que siento cuando estoy contigo 🌙",
+      "Eres mi sueño hecho realidad, Natalia 💛"
+    ];
+
+    // Linternas interactivas fijas en el cielo ("Nuestras linternas de deseos")
+    const SPECIAL_WISH_LANTERNS = [
+      {
+        id: 1,
+        xPct: 20,
+        yPct: 34,
+        icon: "✨",
+        title: "Tu mirada y tu luz",
+        text: "Porque cuando me miras, siento que el mundo entero se detiene y todo tiene sentido. Eres la luz más cálida de mi vida, Natalia."
+      },
+      {
+        id: 2,
+        xPct: 78,
+        yPct: 30,
+        icon: "💛",
+        title: "Tu forma de ser",
+        text: "Por tu dulzura, tu nobleza y esa manera tan única que tienes de hacerme sonreír incluso en los días más simples."
+      },
+      {
+        id: 3,
+        xPct: 33,
+        yPct: 48,
+        icon: "🌙",
+        title: "Nuestra paz",
+        text: "Porque estar a tu lado se siente como estar en casa. Contigo la calma y la alegría siempre van de la mano."
+      },
+      {
+        id: 4,
+        xPct: 68,
+        yPct: 46,
+        icon: "🏮",
+        title: "Nuestros sueños",
+        text: "Por todo lo bonito que nos espera por vivir juntos, cada risa compartida y cada aventura bajo las estrellas."
+      },
+      {
+        id: 5,
+        xPct: 50,
+        yPct: 26,
+        icon: "💫",
+        title: "Simplemente tú",
+        text: "Porque no cambiaría nada de ti. Eres mi persona favorita y mi mayor inspiración todos los días."
+      }
+    ];
+
+    /**
+     * =========================================================================
+     * SISTEMA DE AUDIO AMBIENTAL SUAVE (WEB AUDIO API - ARPA / PIANO ETÉREO)
+     * =========================================================================
+     */
+    class GentleMusicBox {
+      constructor() {
+        this.ctx = null;
+        this.isPlaying = false;
+        this.timer = null;
+        this.step = 0;
+        // Arpegio pentatónico mayor cálido (Do Mayor / La menor romántico)
+        this.notes = [
+          261.63, 329.63, 392.00, 493.88, 523.25, 493.88, 392.00, 329.63, // Cmaj7
+          220.00, 261.63, 329.63, 392.00, 440.00, 392.00, 329.63, 261.63, // Am7
+          174.61, 220.00, 261.63, 349.23, 392.00, 349.23, 261.63, 220.00, // Fmaj9
+          196.00, 246.94, 293.66, 392.00, 440.00, 392.00, 293.66, 246.94  // G6
+        ];
+      }
+
+      toggle() {
+        if (this.isPlaying) {
+          this.stop();
+        } else {
+          this.start();
+        }
+        return this.isPlaying;
+      }
+
+      start() {
+        try {
+          if (!this.ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            this.ctx = new AudioCtx();
+          }
+          if (this.ctx.state === 'suspended') {
+            this.ctx.resume();
+          }
+          this.isPlaying = true;
+          this.playNextNote();
+          this.timer = setInterval(() => this.playNextNote(), 780);
+        } catch (e) {
+          console.warn("Audio no disponible:", e);
+        }
+      }
+
+      stop() {
+        this.isPlaying = false;
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+      }
+
+      playNextNote() {
+        if (!this.isPlaying || !this.ctx) return;
+        const now = this.ctx.currentTime;
+        const freq = this.notes[this.step % this.notes.length];
+        this.step++;
+
+        // Oscilador principal (tono dulce tipo arpa/celesta)
+        const osc = this.ctx.createOscillator();
+        const overtone = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const overtoneGain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        overtone.type = 'triangle';
+        overtone.frequency.setValueAtTime(freq * 2, now);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.055, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.6);
+
+        overtoneGain.gain.setValueAtTime(0.0001, now);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.012, now + 0.05);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+
+        osc.connect(gain);
+        overtone.connect(overtoneGain);
+        gain.connect(this.ctx.destination);
+        overtoneGain.connect(this.ctx.destination);
+
+        osc.start(now);
+        overtone.start(now);
+        osc.stop(now + 2.7);
+        overtone.stop(now + 1.5);
+      }
+
+      playChime() {
+        if (!this.isPlaying || !this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(659.25, now); // Mi5 brillante
+        osc.frequency.exponentialRampToValueAtTime(987.77, now + 0.35);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.045, now + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 1.25);
+      }
+    }
+
+    const musicBox = new GentleMusicBox();
+
+    /**
+     * =========================================================================
+     * MOTOR GRÁFICO CANVAS: CIELO NOCTURNO, LAGO, REFLEJOS, BOTE Y LINTERNAS
+     * =========================================================================
+     */
+    const canvas = document.getElementById('skyCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = 0;
+    let height = 0;
+    let horizonY = 0;
+    let stars = [];
+    let lanterns = [];
+    let sparkles = [];
+    let shootingStars = [];
+    let msgIndex = 0;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      horizonY = height * 0.72;
+      initStars();
+    }
+
+    function initStars() {
+      const count = Math.min(180, Math.floor((width * height) / 6500));
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * (horizonY * 0.95),
+          r: Math.random() * 1.6 + 0.4,
+          alpha: Math.random() * 0.8 + 0.2,
+          twinkleSpeed: Math.random() * 0.025 + 0.008,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    class Lantern {
+      constructor(options = {}) {
+        this.reset(options, true);
+      }
+
+      reset(options = {}, initial = false) {
+        this.isCustom = Boolean(options.isCustom);
+        this.scale = options.scale || (this.isCustom ? 1.15 : (Math.random() * 0.65 + 0.35));
+        this.x = options.x !== undefined ? options.x : Math.random() * width;
+        this.y = options.y !== undefined
+          ? options.y
+          : (initial ? Math.random() * (horizonY * 0.95) : horizonY + Math.random() * 45);
+
+        this.vy = -(Math.random() * 0.42 + 0.25) * (0.65 + this.scale * 0.6);
+        this.vxBase = (Math.random() - 0.5) * 0.25;
+        this.swayAmp = Math.random() * 0.45 + 0.15;
+        this.swayFreq = Math.random() * 0.015 + 0.006;
+        this.phase = Math.random() * Math.PI * 2;
+        this.flickerPhase = Math.random() * Math.PI * 2;
+        this.opacity = options.y !== undefined ? 0.15 : 1;
+        this.label = options.label || null;
+      }
+
+      update(time) {
+        this.y += this.vy;
+        this.x += this.vxBase + Math.sin(time * this.swayFreq + this.phase) * this.swayAmp;
+
+        if (this.opacity < 1 && this.y > 40) {
+          this.opacity = Math.min(1, this.opacity + 0.025);
+        }
+
+        // Generar partículas mágicas ocasionales
+        if (Math.random() < (this.isCustom ? 0.32 : 0.08)) {
+          sparkles.push({
+            x: this.x + (Math.random() - 0.5) * 16 * this.scale,
+            y: this.y + 12 * this.scale,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: Math.random() * 0.35 + 0.1,
+            size: Math.random() * 2 + 0.8,
+            life: 1,
+            decay: Math.random() * 0.02 + 0.012
+          });
+        }
+
+        // Reciclar linterna cuando sale por arriba
+        if (this.y < -70) {
+          if (this.isCustom) {
+            this.isCustom = false;
+            this.label = null;
+          }
+          this.reset({}, false);
+        }
+        if (this.x < -50) this.x = width + 50;
+        if (this.x > width + 50) this.x = -50;
+      }
+
+      draw(ctx, time, isReflection = false) {
+        const flicker = 0.92 + Math.sin(time * 0.08 + this.flickerPhase) * 0.08;
+        const w = 22 * this.scale;
+        const h = 30 * this.scale;
+        const alpha = this.opacity * (isReflection ? 0.24 : 1);
+
+        if (alpha <= 0.01) return;
+
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        if (isReflection) {
+          ctx.scale(1.15, -0.75);
+        }
+        ctx.globalAlpha = alpha;
+
+        // Halo exterior cálido
+        const glowRadius = (this.isCustom ? 56 : 38) * this.scale * flicker;
+        const halo = ctx.createRadialGradient(0, 0, 2 * this.scale, 0, 0, glowRadius);
+        halo.addColorStop(0, this.isCustom ? 'rgba(255, 235, 160, 0.72)' : 'rgba(255, 205, 100, 0.52)');
+        halo.addColorStop(0.45, 'rgba(255, 145, 40, 0.2)');
+        halo.addColorStop(1, 'rgba(255, 120, 20, 0)');
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(0, 0, glowRadius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Cuerpo de la linterna (trapecio redondeado estilo Enredados)
+        const topW = w * 0.62;
+        const botW = w * 0.42;
+        const halfH = h * 0.5;
+
+        const bodyGrad = ctx.createLinearGradient(0, halfH, 0, -halfH);
+        bodyGrad.addColorStop(0, '#fff7cc');
+        bodyGrad.addColorStop(0.45, '#ffbe44');
+        bodyGrad.addColorStop(1, '#d96b14');
+
+        ctx.fillStyle = bodyGrad;
+        ctx.beginPath();
+        ctx.moveTo(-topW, -halfH);
+        ctx.quadraticCurveTo(0, -halfH - 4 * this.scale, topW, -halfH);
+        ctx.quadraticCurveTo(w * 0.65, 0, botW, halfH);
+        ctx.lineTo(-botW, halfH);
+        ctx.quadraticCurveTo(-w * 0.65, 0, -topW, -halfH);
+        ctx.closePath();
+        ctx.fill();
+
+        // Núcleo de luz interior
+        const coreGrad = ctx.createRadialGradient(0, halfH * 0.25, 1, 0, halfH * 0.1, w * 0.55);
+        coreGrad.addColorStop(0, 'rgba(255, 255, 245, 0.95)');
+        coreGrad.addColorStop(1, 'rgba(255, 200, 80, 0)');
+        ctx.fillStyle = coreGrad;
+        ctx.fill();
+
+        // Emblema sutil de sol dorado en linternas grandes
+        if (!isReflection && this.scale > 0.78) {
+          ctx.strokeStyle = 'rgba(180, 85, 15, 0.35)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(0, 0, w * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Etiqueta si es un deseo escrito por Natalia
+        if (!isReflection && this.label) {
+          ctx.font = `italic ${Math.max(13, Math.round(15 * this.scale))}px "Cormorant Garamond", serif`;
+          ctx.textAlign = 'center';
+          ctx.fillStyle = 'rgba(255, 244, 210, 0.95)';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+          ctx.shadowBlur = 6;
+          ctx.fillText(`"${this.label}"`, 0, -halfH - 12);
+        }
+
+        ctx.restore();
+      }
+    }
+
+    function initLanterns() {
+      lanterns = [];
+      const count = Math.min(48, Math.max(26, Math.floor(width / 28)));
+      for (let i = 0; i < count; i++) {
+        lanterns.push(new Lantern({}));
+      }
+    }
+
+    function drawBackgroundAndLake(time) {
+      // 1. Cielo nocturno azul medianoche a púrpura profundo
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, horizonY);
+      skyGrad.addColorStop(0, '#050714');
+      skyGrad.addColorStop(0.45, '#110d2b');
+      skyGrad.addColorStop(0.82, '#221744');
+      skyGrad.addColorStop(1, '#312054');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, width, horizonY);
+
+      // Resplandor cálido en el horizonte por las linternas lejanas
+      const horizonGlow = ctx.createRadialGradient(width * 0.5, horizonY, 10, width * 0.5, horizonY, width * 0.65);
+      horizonGlow.addColorStop(0, 'rgba(255, 175, 70, 0.22)');
+      horizonGlow.addColorStop(0.5, 'rgba(190, 110, 60, 0.08)');
+      horizonGlow.addColorStop(1, 'rgba(15, 12, 35, 0)');
+      ctx.fillStyle = horizonGlow;
+      ctx.fillRect(0, horizonY * 0.35, width, horizonY * 0.65);
+
+      // 2. Estrellas titilantes
+      for (const s of stars) {
+        const alpha = s.alpha * (0.65 + 0.35 * Math.sin(time * s.twinkleSpeed + s.phase));
+        ctx.fillStyle = `rgba(255, 248, 225, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 3. Estrellas fugaces ocasionales
+      if (Math.random() < 0.004 && shootingStars.length < 2) {
+        shootingStars.push({
+          x: Math.random() * width * 0.8 + width * 0.1,
+          y: Math.random() * horizonY * 0.35,
+          vx: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 3),
+          vy: 2 + Math.random() * 2,
+          life: 1
+        });
+      }
+
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        const st = shootingStars[i];
+        st.x += st.vx;
+        st.y += st.vy;
+        st.life -= 0.025;
+        if (st.life <= 0) {
+          shootingStars.splice(i, 1);
+          continue;
+        }
+        const grad = ctx.createLinearGradient(st.x, st.y, st.x - st.vx * 12, st.y - st.vy * 12);
+        grad.addColorStop(0, `rgba(255, 245, 200, ${st.life})`);
+        grad.addColorStop(1, 'rgba(255, 245, 200, 0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(st.x, st.y);
+        ctx.lineTo(st.x - st.vx * 12, st.y - st.vy * 12);
+        ctx.stroke();
+      }
+
+      // 4. Montañas lejanas en silueta suave
+      ctx.fillStyle = '#09091c';
+      ctx.beginPath();
+      ctx.moveTo(0, horizonY);
+      ctx.quadraticCurveTo(width * 0.18, horizonY - 38, width * 0.38, horizonY - 12);
+      ctx.quadraticCurveTo(width * 0.62, horizonY - 46, width * 0.85, horizonY - 16);
+      ctx.quadraticCurveTo(width * 0.94, horizonY - 26, width, horizonY - 10);
+      ctx.lineTo(width, horizonY);
+      ctx.closePath();
+      ctx.fill();
+
+      // 5. Lago tranquilo (parte inferior)
+      const lakeGrad = ctx.createLinearGradient(0, horizonY, 0, height);
+      lakeGrad.addColorStop(0, '#181338');
+      lakeGrad.addColorStop(0.35, '#0d0b24');
+      lakeGrad.addColorStop(1, '#040510');
+      ctx.fillStyle = lakeGrad;
+      ctx.fillRect(0, horizonY, width, height - horizonY);
+
+      // Reflejo dorado difuso en el centro del agua
+      const waterGlow = ctx.createRadialGradient(width * 0.5, horizonY + 18, 5, width * 0.5, horizonY + 50, width * 0.55);
+      waterGlow.addColorStop(0, 'rgba(255, 185, 75, 0.24)');
+      waterGlow.addColorStop(0.6, 'rgba(255, 140, 40, 0.07)');
+      waterGlow.addColorStop(1, 'rgba(10, 10, 30, 0)');
+      ctx.fillStyle = waterGlow;
+      ctx.fillRect(0, horizonY, width, height - horizonY);
+
+      // Ondas sutiles horizontales en el agua
+      ctx.strokeStyle = 'rgba(255, 215, 130, 0.08)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 14; i++) {
+        const wy = horizonY + 12 + i * ((height - horizonY) / 14);
+        const shift = Math.sin(time * 0.02 + i) * 18;
+        const lineW = (60 + i * 16) * (width / 800);
+        ctx.beginPath();
+        ctx.moveTo(width * 0.5 - lineW + shift, wy);
+        ctx.lineTo(width * 0.5 + lineW + shift, wy);
+        ctx.stroke();
+      }
+    }
+
+    function drawBoatSilhouette(time) {
+      const boatX = width * 0.5 + Math.sin(time * 0.012) * 8;
+      const boatY = horizonY + (height - horizonY) * 0.44 + Math.cos(time * 0.018) * 2.2;
+      const scale = Math.min(1.15, Math.max(0.75, width / 900));
+
+      ctx.save();
+      ctx.translate(boatX, boatY);
+      ctx.scale(scale, scale);
+
+      // Reflejo del bote en el agua
+      ctx.fillStyle = 'rgba(4, 5, 16, 0.55)';
+      ctx.beginPath();
+      ctx.ellipse(0, 12, 64, 7, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Ondas alrededor del bote
+      ctx.strokeStyle = 'rgba(255, 215, 135, 0.16)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.ellipse(0, 9, 72 + Math.sin(time * 0.03) * 4, 6, 0, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Casco del bote de madera (silueta oscura con borde cálido)
+      ctx.fillStyle = '#070714';
+      ctx.strokeStyle = 'rgba(255, 195, 95, 0.28)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(-64, -2);
+      ctx.quadraticCurveTo(-50, 14, 0, 14);
+      ctx.quadraticCurveTo(50, 14, 64, -2);
+      ctx.quadraticCurveTo(0, 3, -64, -2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Silueta romántica de dos personas mirando las linternas
+      ctx.fillStyle = '#070714';
+      // Persona 1 (izquierda)
+      ctx.beginPath();
+      ctx.arc(-15, -18, 5.2, 0, Math.PI * 2); // Cabeza
+      ctx.moveTo(-24, 0);
+      ctx.quadraticCurveTo(-22, -12, -15, -12);
+      ctx.quadraticCurveTo(-8, -12, -7, 0);
+      ctx.fill();
+
+      // Persona 2 (derecha)
+      ctx.beginPath();
+      ctx.arc(14, -17, 5, 0, Math.PI * 2); // Cabeza
+      ctx.moveTo(6, 0);
+      ctx.quadraticCurveTo(8, -11, 14, -11);
+      ctx.quadraticCurveTo(21, -11, 23, 0);
+      ctx.fill();
+
+      // Pequeña linterna brillante en el centro del bote
+      const miniGlow = ctx.createRadialGradient(0, -8, 1, 0, -8, 22);
+      miniGlow.addColorStop(0, 'rgba(255, 235, 155, 0.9)');
+      miniGlow.addColorStop(0.5, 'rgba(255, 165, 50, 0.35)');
+      miniGlow.addColorStop(1, 'rgba(255, 140, 30, 0)');
+      ctx.fillStyle = miniGlow;
+      ctx.beginPath();
+      ctx.arc(0, -8, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#ffdf85';
+      ctx.fillRect(-3.5, -13, 7, 10);
+
+      ctx.restore();
+    }
+
+    function drawSparkles() {
+      for (let i = sparkles.length - 1; i >= 0; i--) {
+        const sp = sparkles[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.life -= sp.decay;
+        if (sp.life <= 0) {
+          sparkles.splice(i, 1);
+          continue;
+        }
+        ctx.fillStyle = `rgba(255, 230, 145, ${sp.life})`;
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    let frameTime = 0;
+    function animate() {
+      frameTime++;
+      drawBackgroundAndLake(frameTime);
+
+      // Ordenar linternas por tamaño para dar profundidad
+      lanterns.sort((a, b) => a.scale - b.scale);
+
+      // Dibujar reflejos en el agua de las linternas bajas
+      for (const l of lanterns) {
+        l.update(frameTime);
+        if (l.y > horizonY * 0.22 && l.y < horizonY + 15) {
+          const distFromHorizon = horizonY - l.y;
+          const origY = l.y;
+          l.y = horizonY + distFromHorizon * 0.42 + 8;
+          l.draw(ctx, frameTime, true);
+          l.y = origY;
+        }
+      }
+
+      // Dibujar el bote en el lago
+      drawBoatSilhouette(frameTime);
+
+      // Dibujar linternas en el cielo
+      for (const l of lanterns) {
+        l.draw(ctx, frameTime, false);
+      }
+
+      drawSparkles();
+      requestAnimationFrame(animate);
+    }
+
+    /**
+     * =========================================================================
+     * INTERACTIVIDAD: SOLTAR LINTERNAS, MENSAJES FLOTANTES Y DESEOS ESPECIALES
+     * =========================================================================
+     */
+    const floatingLayer = document.getElementById('floatingMessagesLayer');
+
+    function showFloatingRomanticToast(x, y, customText = null) {
+      const text = customText || ROMANTIC_MESSAGES[msgIndex % ROMANTIC_MESSAGES.length];
+      if (!customText) msgIndex++;
+
+      const toast = document.createElement('div');
+      toast.className = 'floating-toast px-4 py-2 rounded-full card-glass text-amber-100 text-sm sm:text-base italic text-center max-w-[260px] sm:max-w-xs shadow-lg';
+
+      // Mantener el mensaje dentro de los márgenes visibles
+      const safeX = Math.min(Math.max(x, 140), window.innerWidth - 140);
+      const safeY = Math.min(Math.max(y - 35, 95), window.innerHeight - 130);
+
+      toast.style.left = `${safeX}px`;
+      toast.style.top = `${safeY}px`;
+      toast.textContent = text;
+
+      floatingLayer.appendChild(toast);
+      setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 4400);
+    }
+
+    function releaseNewLantern(x, y, customLabel = null) {
+      const spawnX = x !== undefined ? x : (width * 0.5 + (Math.random() - 0.5) * 140);
+      const spawnY = y !== undefined ? y : (horizonY + 15);
+
+      const newLantern = new Lantern({
+        x: spawnX,
+        y: spawnY,
+        scale: customLabel ? 1.25 : 1.05,
+        isCustom: true,
+        label: customLabel
+      });
+      lanterns.push(newLantern);
+
+      // Limitar máximo de linternas para rendimiento fluido
+      if (lanterns.length > 75) {
+        const idx = lanterns.findIndex(l => !l.isCustom);
+        if (idx !== -1) lanterns.splice(idx, 1);
+      }
+
+      // Explosión suave de chispas doradas
+      for (let i = 0; i < 16; i++) {
+        const angle = (Math.PI * 2 * i) / 16;
+        sparkles.push({
+          x: spawnX,
+          y: spawnY,
+          vx: Math.cos(angle) * (0.6 + Math.random() * 0.9),
+          vy: Math.sin(angle) * (0.6 + Math.random() * 0.9),
+          size: 2.2,
+          life: 1,
+          decay: 0.022
+        });
+      }
+
+      musicBox.playChime();
+      showFloatingRomanticToast(spawnX, spawnY, customLabel ? `Deseo elevado: "${customLabel}" ✨` : null);
+    }
+
+    // Tocar o hacer clic en cualquier parte del canvas suelta una linterna
+    canvas.addEventListener('pointerdown', (e) => {
+      releaseNewLantern(e.clientX, e.clientY);
+    });
+
+    // Botón inferior "Soltar una linterna"
+    document.getElementById('releaseLanternBtn').addEventListener('click', () => {
+      const rx = width * (0.35 + Math.random() * 0.3);
+      const ry = horizonY - 10;
+      releaseNewLantern(rx, ry);
+    });
+
+    /**
+     * =========================================================================
+     * LINTERNAS INTERACTIVAS ESPECIALES EN EL CIELO ("NUESTRAS LINTERNAS")
+     * =========================================================================
+     */
+    const specialLayer = document.getElementById('specialLanternsLayer');
+    const reasonModal = document.getElementById('reasonModal');
+    const reasonIcon = document.getElementById('reasonIcon');
+    const reasonTitle = document.getElementById('reasonTitle');
+    const reasonText = document.getElementById('reasonText');
+    let activeReasonLantern = null;
+
+    function renderSpecialLanterns() {
+      specialLayer.innerHTML = '';
+      SPECIAL_WISH_LANTERNS.forEach((item, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.ariaLabel = item.title;
+        btn.className = 'wish-orb pointer-events-auto group flex flex-col items-center focus:outline-none';
+        btn.style.left = `${item.xPct}%`;
+        btn.style.top = `${item.yPct}%`;
+        btn.style.animationDelay = `${index * 0.7}s`;
+
+        btn.innerHTML = `
+          <div class="relative w-11 h-14 sm:w-12 sm:h-16 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-amber-300/35 blur-md group-hover:bg-amber-200/60 transition"></div>
+            <svg class="relative w-9 h-12 sm:w-10 sm:h-14 drop-shadow-[0_0_12px_rgba(255,210,100,0.9)]" viewBox="0 0 40 54">
+              <defs>
+                <linearGradient id="orbGrad${item.id}" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0%" stop-color="#fff8d6"/>
+                  <stop offset="50%" stop-color="#ffc34d"/>
+                  <stop offset="100%" stop-color="#e07016"/>
+                </linearGradient>
+              </defs>
+              <path d="M10 6 Q20 2 30 6 Q34 25 27 46 L13 46 Q6 25 10 6 Z" fill="url(#orbGrad${item.id})" stroke="#ffe9a6" stroke-width="1"/>
+              <circle cx="20" cy="25" r="4" fill="none" stroke="rgba(160,70,10,0.45)" stroke-width="1"/>
+            </svg>
+          </div>
+          <span class="mt-0.5 px-2 py-0.5 rounded-full bg-black/45 border border-amber-300/30 text-[10px] sm:text-xs text-amber-100/95 tracking-wide backdrop-blur-sm">
+            ${item.icon} Tócame
+          </span>
+        `;
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activeReasonLantern = item;
+          reasonIcon.textContent = item.icon;
+          reasonTitle.textContent = item.title;
+          reasonText.textContent = `"${item.text}"`;
+          reasonModal.classList.add('active');
+          musicBox.playChime();
+        });
+
+        specialLayer.appendChild(btn);
+      });
+    }
+
+    document.getElementById('closeReasonBtn').addEventListener('click', () => {
+      reasonModal.classList.remove('active');
+    });
+
+    document.getElementById('nextReasonBtn').addEventListener('click', () => {
+      reasonModal.classList.remove('active');
+      if (activeReasonLantern) {
+        const px = (activeReasonLantern.xPct / 100) * width;
+        const py = (activeReasonLantern.yPct / 100) * height;
+        releaseNewLantern(px, py, activeReasonLantern.title);
+      }
+    });
+
+    reasonModal.addEventListener('click', (e) => {
+      if (e.target === reasonModal) reasonModal.classList.remove('active');
+    });
+
+    /**
+     * =========================================================================
+     * MODALES: CARTA DEDICATORIA Y FORMULARIO DE DESEO PERSONALIZADO
+     * =========================================================================
+     */
+    const letterModal = document.getElementById('letterModal');
+    document.getElementById('openLetterBtn').addEventListener('click', () => {
+      letterModal.classList.add('active');
+      musicBox.playChime();
+    });
+    document.getElementById('closeLetterBtn').addEventListener('click', () => {
+      letterModal.classList.remove('active');
+    });
+    letterModal.addEventListener('click', (e) => {
+      if (e.target === letterModal) letterModal.classList.remove('active');
+    });
+
+    const wishFormModal = document.getElementById('wishFormModal');
+    const wishInput = document.getElementById('wishInput');
+    document.getElementById('openWishFormBtn').addEventListener('click', () => {
+      wishFormModal.classList.add('active');
+      setTimeout(() => wishInput.focus(), 150);
+    });
+    document.getElementById('closeWishFormBtn').addEventListener('click', () => {
+      wishFormModal.classList.remove('active');
+    });
+    wishFormModal.addEventListener('click', (e) => {
+      if (e.target === wishFormModal) wishFormModal.classList.remove('active');
+    });
+
+    document.getElementById('customWishForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const wishText = wishInput.value.trim();
+      if (!wishText) return;
+      wishInput.value = '';
+      wishFormModal.classList.remove('active');
+      releaseNewLantern(width * 0.5, horizonY - 15, wishText);
+    });
+
+    /**
+     * =========================================================================
+     * CONTROL DE SONIDO AMBIENTAL
+     * =========================================================================
+     */
+    const audioToggleBtn = document.getElementById('audioToggleBtn');
+    const audioIcon = document.getElementById('audioIcon');
+    const audioLabel = document.getElementById('audioLabel');
+
+    audioToggleBtn.addEventListener('click', () => {
+      const playing = musicBox.toggle();
+      if (playing) {
+        audioIcon.textContent = '🎶';
+        audioLabel.textContent = 'Sonando';
+        audioToggleBtn.classList.add('ring-2', 'ring-amber-300/60');
+      } else {
+        audioIcon.textContent = '🎵';
+        audioLabel.textContent = 'Melodía';
+        audioToggleBtn.classList.remove('ring-2', 'ring-amber-300/60');
+      }
+    });
+
+    /**
+     * =========================================================================
+     * INICIALIZACIÓN AL CARGAR LA VENTANA
+     * =========================================================================
+     */
+    window.addEventListener('resize', resizeCanvas);
+
+    window.onload = function () {
+      resizeCanvas();
+      initLanterns();
+      renderSpecialLanterns();
+      animate();
+    };
+  </script>
+</body>
+</html>
